@@ -12,9 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+/*
+ * Routes for the posts
+ */
+Route::get('posts', 'Post\OverviewController@index');
+Route::prefix('posts')->group(function(){
+    Route::get('/', 'Post\OverviewController@index');
+});
